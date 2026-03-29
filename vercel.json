@@ -3,11 +3,13 @@
   "builds": [
     { "src": "a1.html", "use": "@vercel/static" },
     { "src": "buscar-cliente.js", "use": "@vercel/node" },
-    { "src": "salvar-assessment.js", "use": "@vercel/node" }
+    { "src": "salvar-assessment.js", "use": "@vercel/node" },
+    { "src": "claude.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/a1", "dest": "/a1.html" },
     { "src": "/api/buscar-cliente", "dest": "/buscar-cliente.js" },
-    { "src": "/api/salvar-assessment", "dest": "/salvar-assessment.js" }
+    { "src": "/api/salvar-assessment", "dest": "/salvar-assessment.js" },
+    { "src": "/api/claude", "dest": "/claude.js" }
   ]
 }
