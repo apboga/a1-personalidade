@@ -302,6 +302,198 @@ input:focus, textarea:focus {
   background: var(--white);
 }
 
+
+/* ── WELCOME SCREEN ── */
+.welcome-title {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--black);
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.welcome-name {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.welcome-body {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--gray-700);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.welcome-body p {
+  margin-bottom: 1.25rem;
+}
+
+.welcome-meta {
+  font-size: 11px;
+  color: var(--gray-300);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.privacy-link {
+  color: var(--gray-300);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.privacy-link:hover {
+  color: var(--gray-500);
+}
+
+/* ── REPORT PREMIUM ── */
+.rep-arquetipo-nome {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.rep-arquetipo-def {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--gray-700);
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  padding-left: 1rem;
+  border-left: 2px solid var(--gold);
+}
+
+.rep-section-title {
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rep-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-100);
+}
+
+.rep-section-body {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--black);
+  font-weight: 400;
+}
+
+.rep-scores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.rep-score-item {
+  padding: 1rem;
+  background: var(--cream);
+  border-left: 2px solid var(--gold);
+}
+
+.rep-score-dim {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+
+.rep-score-val {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1;
+}
+
+.rep-score-max {
+  font-size: 12px;
+  color: var(--gray-300);
+}
+
+.mentor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--black);
+  padding: 6px 12px;
+  margin-bottom: 2rem;
+}
+
+.mentor-section {
+  background: #0f0f0f;
+  padding: 2rem;
+  margin: 2rem -2.5rem;
+}
+
+.mentor-section .rep-section-title {
+  color: var(--gold);
+}
+
+.mentor-section .rep-section-title::after {
+  background: rgba(201,168,76,0.2);
+}
+
+.mentor-section .rep-section-body {
+  color: rgba(255,255,255,0.8);
+}
+
+.mentor-section .rep-arquetipo-nome {
+  color: var(--white);
+}
+
+.hipotese-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+}
+
+.hipotese-item:last-child {
+  border-bottom: none;
+}
+
+.hipotese-num {
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
 /* ── ERRORS/WARNS ── */
 .err { font-size: 11px; color: #b03a2e; min-height: 16px; margin-top: 10px; letter-spacing: 0.3px; }
 .warn { font-size: 11px; color: #b03a2e; min-height: 16px; margin-top: 12px; letter-spacing: 0.3px; }
@@ -520,7 +712,27 @@ input:focus, textarea:focus {
 
 <div class="card">
 
-  <div id="s0">
+  <div id="s_bv">
+    <span class="a-badge">Assessment A1 · Personalidade Executiva</span>
+    <div class="welcome-title">Olá, <span class="welcome-name" id="wn">Mentorado</span>.</div>
+    <div class="welcome-body">
+      <p>Este é o Assessment A1 · Personalidade Executiva.</p>
+      <p>Mais do que um questionário, este é um instrumento de leitura comportamental profunda, desenvolvido para mapear como você pensa, decide e se posiciona. Principalmente sob pressão, onde sua verdade operacional aparece.</p>
+      <p>Os dados aqui não servem para te encaixar em um perfil. Servem para revelar padrões.</p>
+      <p>Padrões que hoje sustentam seus resultados. E padrões que podem estar limitando o seu próximo nível.</p>
+      <p>Quanto mais verdadeiro você for, mais preciso será o diagnóstico e mais estratégica será a nossa atuação na mentoria.</p>
+      <p>Não responda com base no que parece certo. Responda com base no que é real.</p>
+      <p>Você não será julgado.</p>
+      <p>Esteja em um ambiente que favoreça seu foco e sua concentração.</p>
+    </div>
+    <div class="welcome-meta">Tempo estimado: 15 a 20 minutos</div>
+    <button class="btn-main" onclick="aceitarEContinuar()">Aceitar e continuar</button>
+    <div style="text-align:center;margin-top:1.25rem">
+      <a href="#" class="privacy-link" onclick="return false">Política de privacidade</a>
+    </div>
+  </div>
+
+  <div id="s0" style="display:none">
     <span class="a-badge">Assessment A1</span>
     <h1>Personalidade<br>Executiva</h1>
     <div class="sub">Instrumento de diagnóstico comportamental. 40 questões + aprofundamento contextual · aprox. 15 min</div>
@@ -543,7 +755,6 @@ input:focus, textarea:focus {
     <div class="warn" id="warn"></div>
     <div class="nav">
       <button class="btn-sec" id="bv" onclick="prev()">← Anterior</button>
-      <button class="btn-sec" style="font-size:9px;color:var(--gray-300);border-color:var(--gray-100)" onclick="pularParaFinal()">Pular [teste]</button>
       <button class="btn-sec" id="bn" onclick="avancar()">Próxima →</button>
     </div>
   </div>
@@ -566,35 +777,57 @@ input:focus, textarea:focus {
   </div>
 
   <div id="s3" style="display:none">
-    <div class="tab-row">
-      <button class="tab active" onclick="showTab('resumo',this)">Resumo</button>
-      <button class="tab" onclick="showTab('detalhe',this)">Análise completa</button>
+
+    <!-- CABEÇALHO -->
+    <div class="rn" id="rn"></div>
+    <div class="rc" id="rc"></div>
+
+    <!-- ARQUÉTIPO -->
+    <div class="rep-section-title" style="margin-top:2rem">Arquétipo</div>
+    <div class="rep-arquetipo-nome" id="r-arq-nome"></div>
+    <div class="rep-arquetipo-def" id="r-arq-def"></div>
+
+    <!-- SCORES -->
+    <div class="rep-section-title">Scores por dimensão</div>
+    <div id="r-scores"></div>
+
+    <!-- LEITURA DO PERFIL -->
+    <div class="rep-section-title">Leitura do perfil</div>
+    <div class="rep-section-body" id="r-leitura"></div>
+
+    <!-- FORÇAS -->
+    <div class="rep-section-title">Forças</div>
+    <div class="rep-section-body" id="r-forcas"></div>
+
+    <!-- LIMITADORES -->
+    <div class="rep-section-title">O que pode estar te limitando</div>
+    <div class="rep-section-body" id="r-limitadores"></div>
+
+    <!-- DESENVOLVIMENTO -->
+    <div class="rep-section-title">Vetor de desenvolvimento</div>
+    <div class="rep-section-body" id="r-dev"></div>
+
+    <!-- MENTOR SECTION -->
+    <div class="mentor-section">
+      <div class="mentor-badge">Visão do mentor</div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:3px;text-transform:uppercase;margin-bottom:2rem">Uso exclusivo da sessão de devolutiva</div>
+
+      <div class="rep-section-title">Motor interno</div>
+      <div class="rep-section-body" id="d-motor"></div>
+
+      <div class="rep-section-title" style="margin-top:2rem">Estilo relacional</div>
+      <div class="rep-section-body" id="d-rel"></div>
+
+      <div class="rep-section-title" style="margin-top:2rem">Padrão sob pressão</div>
+      <div class="rep-section-body" id="d-press"></div>
+
+      <div class="rep-section-title" style="margin-top:2rem">Pontos cegos</div>
+      <div class="rep-section-body" id="d-cegos"></div>
+
+      <div class="rep-section-title" style="margin-top:2rem">Hipóteses para a sessão</div>
+      <div id="d-hipoteses"></div>
     </div>
-    <div id="tab-resumo">
-      <div class="rn" id="rn"></div>
-      <div class="rc" id="rc"></div>
-      <div class="sec-label">Arquétipo</div>
-      <div class="sec-body" id="r-arq"></div>
-      <div class="div-line">
-        <div class="sec-label">Scores por dimensão</div>
-        <div id="r-scores"></div>
-      </div>
-      <div class="div-line">
-        <div class="sec-label">Forças</div>
-        <div id="r-forcas" style="margin-bottom:1.5rem"></div>
-        <div class="sec-label">Vulnerabilidades</div>
-        <div id="r-vuln" style="margin-bottom:1.5rem"></div>
-        <div class="sec-label">Zona de genialidade</div>
-        <div class="sec-body" id="r-zona"></div>
-      </div>
-    </div>
-    <div id="tab-detalhe" style="display:none">
-      <div class="sec-label">Motor interno</div><div class="sec-body" id="d-motor"></div>
-      <div class="div-line"><div class="sec-label">Estilo relacional</div><div class="sec-body" id="d-rel"></div></div>
-      <div class="div-line"><div class="sec-label">Padrão sob pressão</div><div class="sec-body" id="d-press"></div></div>
-      <div class="div-line"><div class="sec-label">Pontos cegos</div><div class="sec-body" id="d-cegos"></div></div>
-      <div class="div-line"><div class="sec-label">Desenvolvimento prioritário</div><div class="sec-body" id="d-dev"></div></div>
-    </div>
+
     <div style="margin-top:2.5rem">
       <button class="btn-sec" onclick="imprimirRelatorio()">Baixar relatório</button>
     </div>
@@ -659,7 +892,8 @@ const QS=[
 let cur=0,ans={},exec={},scores={},perguntas=[],apiKey='';
 let airtableToken='',linkId='',clienteId='',assessmentId='';
 
-function show(id){['s0','s1','s_lq','s2','s_lr','s3'].forEach(s=>document.getElementById(s).style.display=s===id?'block':'none');}
+function aceitarEContinuar(){show('s0');}
+function show(id){['s_bv','s0','s1','s_lq','s2','s_lr','s3'].forEach(s=>document.getElementById(s).style.display=s===id?'block':'none');}
 async function loadClientData(){
   try{
     const urlParams=new URLSearchParams(window.location.search);
@@ -673,7 +907,9 @@ async function loadClientData(){
     clienteId=data.data.clienteId;
     assessmentId=data.data.assessmentId;
     document.getElementById('vn').value=data.data.clienteName;
+    document.getElementById('wn').textContent=data.data.clienteName.split(' ')[0];
     if(data.data.clienteEmail){ document.getElementById('ve').value=data.data.clienteEmail; }
+    show('s_bv');
     console.log('Dados do cliente carregados com sucesso');
   }catch(error){
     console.error('Erro ao carregar dados do cliente:',error);
@@ -755,7 +991,7 @@ async function calcPerguntas(){
     perguntas=[{pergunta:"Descreva uma situação recente em que tomou uma decisão difícil.",contexto:""},{pergunta:"O que as pessoas que trabalham com você diriam que é seu maior limitador?",contexto:""},{pergunta:"Qual padrão você reconhece em si mesmo mas tem dificuldade de mudar?",contexto:""}];
   }
   document.getElementById('abertas-card').innerHTML=perguntas.map((p,i)=>
-    '<div class="q-aberta"><div class="q-num">0'+(i+1)+'</div><div class="q-aberta-txt">'+p.pergunta+'</div><textarea id="ra'+i+'" rows="3" placeholder="Sua resposta"></textarea>'+(p.contexto?'<div class="q-hint">'+p.contexto+'</div>':'')+'</div>'
+    '<div class="q-aberta"><div class="q-num">0'+(i+1)+'</div><div class="q-aberta-txt">'+p.pergunta+'</div><textarea id="ra'+i+'" rows="3" placeholder="Sua resposta"></textarea>'+'</div>'
   ).join('');
   show('s2');
 }
@@ -768,7 +1004,36 @@ async function gerarRelatorio(){
   const perfil=QS.filter(q=>q.d==='perfil').map(q=>{const i=QS.indexOf(q);return q.t+': '+(ans[i]!==undefined?q.o[ans[i]]:'N/A');}).join('\n');
   const scTxt=Object.entries(scores).map(([d,v])=>d+': '+v+'/10').join('\n');
   const abertas=perguntas.map((p,i)=>'P: '+p.pergunta+'\nR: '+(resps[i]||'não respondida')).join('\n\n');
-  const prompt=`Psicólogo organizacional sênior especializado em executivos C-level. Análise direta, densa, sem eufemismos.\n\nExecutivo: ${exec.nome} | ${exec.cargo||'—'} | ${exec.emp||'—'}\nScores Big Five Adaptado (0-10): ${scTxt}\nPerfil qualitativo: ${perfil}\nRespostas contextuais: ${abertas}\n\nJSON:\n{"arquetipo":"nome preciso + 2-3 frases definindo este padrão específico","forcas":["força 1 com como se manifesta","força 2","força 3"],"vulnerabilidades":["vulnerabilidade real disfarçada de virtude","segunda vulnerabilidade"],"zona_genialidade":"onde este perfil opera no melhor absoluto","motor_interno":"estrutura motivacional profunda — tensões internas reveladas","estilo_relacional":"como se relaciona — atração, atrito, necessidades","padrao_pressao":"o que acontece de verdade sob stress","pontos_cegos":"padrões limitadores disfarçados de virtudes","desenvolvimento":"uma intervenção cirúrgica específica"}\n\nApenas JSON.`;
+  const prompt=`Você é um psicólogo organizacional sênior com 20 anos de experiência em diagnóstico comportamental de executivos C-level. Sua análise é direta, densa, sem eufemismos e sem linguagem motivacional.
+
+DADOS DO EXECUTIVO:
+Nome: ${exec.nome}
+Cargo: ${exec.cargo||'não informado'}
+Empresa: ${exec.emp||'não informada'}
+
+SCORES DIAGNÓSTICOS (0-10):
+${scTxt}
+
+PERFIL QUALITATIVO:
+${perfil}
+
+RESPOSTAS ABERTAS:
+${abertas}
+
+INSTRUÇÕES:
+- Arquétipo: nome de 2-5 palavras que captura o padrão central. Definição de 4-5 linhas densa e precisa, revelando a dinâmica interna que sustenta e limita este perfil.
+- Leitura do perfil: 3 parágrafos narrativos conectando os scores com os padrões revelados nas respostas abertas. Linguagem de diagnóstico clínico, não de coaching. Cada parágrafo com no mínimo 3 linhas.
+- Forcas: texto corrido de 3-4 linhas descrevendo as forças reais e como se manifestam no contexto executivo deste perfil específico.
+- Limitadores: texto corrido de 3-4 linhas sobre as vulnerabilidades reais — especialmente as disfarçadas de virtudes. Sem julgamento mas sem suavização.
+- Desenvolvimento: uma direção específica, cirúrgica, com o que fazer concretamente. 3-4 linhas.
+- Motor interno: as tensões motivacionais profundas que explicam o comportamento. O que este executivo realmente quer e teme. 3-4 linhas densas.
+- Estilo relacional: como este perfil se relaciona — o que atrai, o que gera atrito, o que precisa dos outros. 3-4 linhas.
+- Padrao pressao: o que acontece de verdade quando este executivo está sob stress extremo. Comportamentos reais, não aspiracionais. 3-4 linhas.
+- Pontos cegos: os padrões limitadores que este executivo provavelmente não enxerga em si mesmo. 3-4 linhas.
+- Hipoteses sessao: 3 hipóteses de trabalho para a sessão de devolutiva com o mentor. Perguntas ou provocações estratégicas. Formato: array de 3 strings.
+
+Responda APENAS com JSON válido:
+{"arquetipo_nome":"","arquetipo_def":"","leitura_perfil":"","forcas":"","limitadores":"","desenvolvimento":"","motor_interno":"","estilo_relacional":"","padrao_pressao":"","pontos_cegos":"","hipoteses_sessao":["","",""]}`;
   try{
     const rawTxt2=await callAPI(prompt,1800);
     const txt=rawTxt2.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
@@ -779,23 +1044,39 @@ async function gerarRelatorio(){
 
 function showResult(data,err){
   show('s3');
-  document.getElementById('rn').textContent=exec.nome;
-  document.getElementById('rc').textContent=[exec.cargo,exec.emp].filter(Boolean).join(' · ').toUpperCase();
-  document.getElementById('r-scores').innerHTML=Object.entries(scores).map(([d,v])=>
-    '<div class="drow"><span class="dn">'+d+'</span><span class="dv">'+v+'/10</span></div><div class="bar"><div class="bf" style="width:'+Math.round(v*10)+'%"></div></div>'
-  ).join('');
   if(data && airtableToken){ salvarNoAirtable(data); }
   if(data){
-    document.getElementById('r-arq').textContent=data.arquetipo||'';
-    document.getElementById('r-forcas').innerHTML=(data.forcas||[]).map(f=>'<span class="tag tag-g">'+f+'</span>').join('');
-    document.getElementById('r-vuln').innerHTML=(data.vulnerabilidades||[]).map(v=>'<span class="tag tag-r">'+v+'</span>').join('');
-    document.getElementById('r-zona').textContent=data.zona_genialidade||'';
+    // Header
+    document.getElementById('rn').textContent=exec.nome;
+    document.getElementById('rc').textContent=[exec.cargo,exec.emp].filter(Boolean).join(' · ').toUpperCase();
+
+    // Scores grid
+    document.getElementById('r-scores').innerHTML='<div class="rep-scores-grid">'+
+      Object.entries(scores).map(([d,v])=>
+        '<div class="rep-score-item"><div class="rep-score-dim">'+d+'</div><div class="rep-score-val">'+v+'<span class="rep-score-max">/10</span></div></div>'
+      ).join('')+'</div>';
+
+    // Mentorado version
+    document.getElementById('r-arq-nome').textContent=data.arquetipo_nome||data.arquetipo||'';
+    document.getElementById('r-arq-def').textContent=data.arquetipo_def||'';
+    document.getElementById('r-leitura').textContent=data.leitura_perfil||'';
+    document.getElementById('r-forcas').textContent=data.forcas||'';
+    document.getElementById('r-limitadores').textContent=data.limitadores||'';
+    document.getElementById('r-dev').textContent=data.desenvolvimento||'';
+
+    // Mentor version
     document.getElementById('d-motor').textContent=data.motor_interno||'';
     document.getElementById('d-rel').textContent=data.estilo_relacional||'';
     document.getElementById('d-press').textContent=data.padrao_pressao||'';
     document.getElementById('d-cegos').textContent=data.pontos_cegos||'';
-    document.getElementById('d-dev').textContent=data.desenvolvimento||'';
-  }else{document.getElementById('r-arq').textContent=err||'Erro ao processar.';}
+    const hip=data.hipoteses_sessao||[];
+    document.getElementById('d-hipoteses').innerHTML=hip.map((h,i)=>
+      '<div class="hipotese-item"><div class="hipotese-num">Hipótese 0'+(i+1)+'</div>'+h+'</div>'
+    ).join('');
+  }else{
+    document.getElementById('r-arq-nome').textContent='Erro ao processar';
+    document.getElementById('r-arq-def').textContent=err||'';
+  }
 }
 function reset(){cur=0;ans={};exec={};scores={};perguntas=[];apiKey='';show('s0');}
 function imprimirRelatorio(){window.print();}
