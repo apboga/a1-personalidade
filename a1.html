@@ -727,7 +727,8 @@ async function calcPerguntas(){
   const scTxt=Object.entries(scores).map(([d,v])=>d+': '+v+'/10').join('\n');
   const prompt=`Psicólogo organizacional especializado em executivos C-level.\nScores (0-10): ${scTxt}\nGere 3 perguntas abertas específicas para este perfil.\nJSON: {"perguntas":[{"pergunta":"texto","contexto":"razão"},{"pergunta":"texto","contexto":"razão"},{"pergunta":"texto","contexto":"razão"}]}\nApenas JSON.`;
   try{
-    const txt=await callAPI(prompt,700);
+    const rawTxt=await callAPI(prompt,700);
+    const txt=rawTxt.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
     let p;try{p=JSON.parse(txt);}catch(e){const m=txt.match(/\{[\s\S]*\}/);p=m?JSON.parse(m[0]):null;}
     perguntas=p&&p.perguntas?p.perguntas:[
       {pergunta:"Descreva uma situação recente em que tomou uma decisão difícil. O que aconteceu?",contexto:"Revela padrão decisório real"},
@@ -753,7 +754,8 @@ async function gerarRelatorio(){
   const abertas=perguntas.map((p,i)=>'P: '+p.pergunta+'\nR: '+(resps[i]||'não respondida')).join('\n\n');
   const prompt=`Psicólogo organizacional sênior especializado em executivos C-level. Análise direta, densa, sem eufemismos.\n\nExecutivo: ${exec.nome} | ${exec.cargo||'—'} | ${exec.emp||'—'}\nScores Big Five Adaptado (0-10): ${scTxt}\nPerfil qualitativo: ${perfil}\nRespostas contextuais: ${abertas}\n\nJSON:\n{"arquetipo":"nome preciso + 2-3 frases definindo este padrão específico","forcas":["força 1 com como se manifesta","força 2","força 3"],"vulnerabilidades":["vulnerabilidade real disfarçada de virtude","segunda vulnerabilidade"],"zona_genialidade":"onde este perfil opera no melhor absoluto","motor_interno":"estrutura motivacional profunda — tensões internas reveladas","estilo_relacional":"como se relaciona — atração, atrito, necessidades","padrao_pressao":"o que acontece de verdade sob stress","pontos_cegos":"padrões limitadores disfarçados de virtudes","desenvolvimento":"uma intervenção cirúrgica específica"}\n\nApenas JSON.`;
   try{
-    const txt=await callAPI(prompt,1800);
+    const rawTxt2=await callAPI(prompt,1800);
+    const txt=rawTxt2.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
     let p;try{p=JSON.parse(txt);}catch(e){const m=txt.match(/\{[\s\S]*\}/);p=m?JSON.parse(m[0]):null;}
     p?showResult(p):showResult(null,txt);
   }catch(e){showResult(null,'Erro: '+e.message);}
