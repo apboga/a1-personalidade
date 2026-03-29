@@ -726,13 +726,13 @@ function calcScores(){
 }
 
 async function callAPI(prompt,maxTokens){
-  const res=await fetch('https://hook.us2.make.com/mqjtpaghtgwugpjci6lu69qm7c7048mm',{
+  const res=await fetch('/api/claude',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({prompt,maxTokens})
   });
   const data=await res.json();
-  const raw=data.content?.[0]?.text||'';
+  const raw=data?.content?.[0]?.text||'';
   return raw.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
 }
 
