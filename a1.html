@@ -246,7 +246,7 @@ input:focus, textarea:focus {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--gray-100);
   cursor: pointer;
   font-size: 14px;
@@ -262,6 +262,7 @@ input:focus, textarea:focus {
 }
 
 .opt:first-child { border-top: 1px solid var(--gray-100); }
+.opts { padding: 0 4px; }
 .opt:hover { color: var(--gold); }
 .opt.sel .mark { border-color: var(--gold); background: var(--gold); }
 .opt.sel .olbl { font-weight: 500; color: var(--black); }
@@ -475,6 +476,14 @@ input:focus, textarea:focus {
 }
 
 /* ── RESPONSIVE ── */
+@media print {
+  body { background: white; }
+  .header, .footer { display: none; }
+  .card { box-shadow: none; max-width: 100%; }
+  .btn-sec, .btn-main, .tab-row { display: none; }
+  #tab-resumo, #tab-detalhe { display: block !important; }
+}
+
 @media(max-width:500px) {
   .card { padding: 2rem 1.5rem; }
   h1 { font-size: 32px; }
@@ -570,7 +579,9 @@ input:focus, textarea:focus {
       <div class="div-line"><div class="sec-label">Pontos cegos</div><div class="sec-body" id="d-cegos"></div></div>
       <div class="div-line"><div class="sec-label">Desenvolvimento prioritário</div><div class="sec-body" id="d-dev"></div></div>
     </div>
-    <div style="margin-top:2.5rem"><button class="btn-sec" onclick="reset()">Novo assessment</button></div>
+    <div style="margin-top:2.5rem">
+      <button class="btn-sec" onclick="imprimirRelatorio()">Baixar relatório</button>
+    </div>
   </div>
 
 </div>
@@ -604,7 +615,7 @@ const QS=[
   {d:"conscienciosidade",b:1,t:"Quando percebe que não vai cumprir um compromisso, com quanto tempo de antecedência comunica?",o:["Imediatamente ao perceber o risco","Com antecedência confortável","Próximo ao prazo","No dia do prazo","Depois do prazo"],r:0},
   {d:"conscienciosidade",b:1,t:"Quando foi a última vez que entregou algo incompleto por pressão de prazo?",o:["Não me lembro — raramente acontece","Faz mais de 6 meses","Nos últimos 6 meses","No último mês","Na última semana"],r:1},
   {d:"conscienciosidade",b:1,t:"Quando um projeto se torna mais complexo que o previsto, sua tendência é:",o:["Manter escopo e absorver a complexidade","Manter escopo mas negociar prazo","Revisar escopo com o time","Reduzir escopo para garantir qualidade","Renegociar escopo e prazo"],r:0},
-  {d:"conscienciosidade",b:1,t:"Com que frequência você delega tarefas que poderia fazer mais rápido você mesmo?",o:["Quase sempre","Na maioria das vezes","Depende da complexidade","Raramente","Faço eu mesmo — é mais rápido"],r:0},
+  {d:"conscienciosidade",b:1,t:"Você delega tarefas mesmo quando conseguiria fazê-las mais rápido sozinho?",o:["Quase sempre","Na maioria das vezes","Depende da complexidade","Raramente","Faço eu mesmo — é mais rápido"],r:0},
   {d:"estabilidade emocional",b:1,t:"Nas últimas semanas, quantas vezes você adiou uma decisão por estar sobrecarregado emocionalmente?",o:["Nenhuma vez","1 vez","2 a 3 vezes","4 a 6 vezes","Mais de 6 vezes"],r:1},
   {d:"estabilidade emocional",b:1,t:"Quando um projeto importante vai mal, quanto tempo leva para retomar seu ritmo normal?",o:["Imediatamente","Algumas horas","Um dia","Alguns dias","Mais de uma semana"],r:0},
   {d:"estabilidade emocional",b:1,t:"Quando alguém questiona sua decisão em público, sua primeira reação é:",o:["Peço para detalhar a objeção com calma","Explico a decisão sem me alterar","Sinto desconforto mas ouço","Fico na defensiva internamente","Contra-argumento imediatamente"],r:0},
@@ -706,7 +717,8 @@ async function callAPI(prompt,maxTokens){
     body:JSON.stringify({prompt,maxTokens})
   });
   const data=await res.json();
-  return data.content?.[0]?.text||'';
+  const raw=data.content?.[0]?.text||'';
+  return raw.replace(/```json\s*/gi,'').replace(/```\s*/g,'').trim();
 }
 
 async function calcPerguntas(){
@@ -768,6 +780,7 @@ function showResult(data,err){
   }else{document.getElementById('r-arq').textContent=err||'Erro ao processar.';}
 }
 function reset(){cur=0;ans={};exec={};scores={};perguntas=[];apiKey='';show('s0');}
+function imprimirRelatorio(){window.print();}
 
 async function salvarNoAirtable(data){
   try{
