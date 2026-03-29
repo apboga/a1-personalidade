@@ -862,7 +862,7 @@ input:focus, textarea:focus {
     <div class="rep-section-body" id="r-dev"></div>
 
     <!-- MENTOR SECTION -->
-    <div class="mentor-section">
+    <div class="mentor-section" id="mentor-section" style="display:none">
       <div class="mentor-badge">Visão do mentor</div>
       <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:3px;text-transform:uppercase;margin-bottom:2rem">Uso exclusivo da sessão de devolutiva</div>
 
@@ -882,8 +882,9 @@ input:focus, textarea:focus {
       <div id="d-hipoteses"></div>
     </div>
 
-    <div style="margin-top:2.5rem">
+    <div style="margin-top:2.5rem;display:flex;gap:12px;flex-wrap:wrap">
       <button class="btn-sec" onclick="imprimirRelatorio()">Baixar relatório</button>
+      <button class="btn-sec" onclick="revelarMentor()" id="btn-mentor" style="border-color:var(--gold);color:var(--gold)">Visão do mentor</button>
     </div>
   </div>
 
@@ -949,6 +950,16 @@ let airtableToken='',linkId='',clienteId='',assessmentId='';
 function aceitarEContinuar(){show('s0');}
 function abrirPrivacidade(){document.getElementById('privacy-modal').classList.add('active');}
 function fecharPrivacidade(){document.getElementById('privacy-modal').classList.remove('active');}
+function revelarMentor(){
+  const senha=prompt('Senha do mentor:');
+  if(senha==='AB2026'){
+    document.getElementById('mentor-section').style.display='block';
+    document.getElementById('btn-mentor').style.display='none';
+    document.getElementById('mentor-section').scrollIntoView({behavior:'smooth'});
+  }else if(senha!==null){
+    alert('Senha incorreta.');
+  }
+}
 function show(id){['s_bv','s0','s1','s_lq','s2','s_lr','s3'].forEach(s=>document.getElementById(s).style.display=s===id?'block':'none');}
 async function loadClientData(){
   try{
