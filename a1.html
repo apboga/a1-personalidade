@@ -322,14 +322,14 @@ input:focus, textarea:focus {
 .welcome-body {
   font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.9;
+  line-height: 1.55;
   color: var(--gray-700);
   font-weight: 400;
   margin-bottom: 2rem;
 }
 
 .welcome-body p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .welcome-meta {
@@ -492,6 +492,60 @@ input:focus, textarea:focus {
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 6px;
+}
+
+
+/* ── PRIVACY MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.85);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--white);
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 3rem 2.5rem;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--gray-500);
+  line-height: 1;
+}
+.modal-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+}
+.modal-body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--gray-700);
+  font-weight: 300;
+}
+.modal-body h3 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--black);
 }
 
 /* ── ERRORS/WARNS ── */
@@ -728,7 +782,7 @@ input:focus, textarea:focus {
     <div class="welcome-meta">Tempo estimado: 15 a 20 minutos</div>
     <button class="btn-main" onclick="aceitarEContinuar()">Aceitar e continuar</button>
     <div style="text-align:center;margin-top:1.25rem">
-      <a href="#" class="privacy-link" onclick="return false">Política de privacidade</a>
+      <a href="#" class="privacy-link" onclick="abrirPrivacidade();return false">Política de privacidade</a>
     </div>
   </div>
 
@@ -893,6 +947,8 @@ let cur=0,ans={},exec={},scores={},perguntas=[],apiKey='';
 let airtableToken='',linkId='',clienteId='',assessmentId='';
 
 function aceitarEContinuar(){show('s0');}
+function abrirPrivacidade(){document.getElementById('privacy-modal').classList.add('active');}
+function fecharPrivacidade(){document.getElementById('privacy-modal').classList.remove('active');}
 function show(id){['s_bv','s0','s1','s_lq','s2','s_lr','s3'].forEach(s=>document.getElementById(s).style.display=s===id?'block':'none');}
 async function loadClientData(){
   try{
@@ -1117,5 +1173,36 @@ async function salvarNoAirtable(data){
 }
 
 </script>
+
+<div class="modal-overlay" id="privacy-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharPrivacidade()">×</button>
+    <div class="modal-title">Política de Privacidade</div>
+    <div class="modal-body">
+      <p>Esta política descreve como os dados coletados neste assessment são tratados no contexto da Mentoria Estratégica Comportamental de Alexandre Bogaciovas.</p>
+
+      <h3>Dados coletados</h3>
+      <p>Nome, cargo, empresa e as respostas às questões do assessment. Não coletamos dados financeiros, documentos de identificação ou qualquer informação sensível além do contexto comportamental.</p>
+
+      <h3>Finalidade</h3>
+      <p>Os dados são utilizados exclusivamente para a geração do diagnóstico comportamental e para subsidiar o trabalho de mentoria individual entre você e Alexandre Bogaciovas. Não são utilizados para fins comerciais, pesquisas externas ou qualquer outro propósito.</p>
+
+      <h3>Compartilhamento</h3>
+      <p>Suas respostas e o relatório gerado são estritamente confidenciais. Não são compartilhados com terceiros em nenhuma circunstância, exceto mediante sua autorização expressa.</p>
+
+      <h3>Armazenamento</h3>
+      <p>Os dados são armazenados em ambiente seguro e acessados apenas pelo mentor responsável pelo seu processo. Você pode solicitar a exclusão dos seus dados a qualquer momento.</p>
+
+      <h3>Seus direitos</h3>
+      <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem direito de acessar, corrigir ou solicitar a exclusão dos seus dados. Para exercer esses direitos, entre em contato diretamente com Alexandre Bogaciovas.</p>
+
+      <h3>Consentimento</h3>
+      <p>Ao clicar em "Aceitar e continuar", você consente com a coleta e uso dos seus dados conforme descrito acima, exclusivamente para fins do seu processo de mentoria.</p>
+
+      <p style="margin-top:2rem;font-size:11px;color:var(--gray-300)">Última atualização: março de 2026 · Mentoria Estratégica Comportamental</p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
