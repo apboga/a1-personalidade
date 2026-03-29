@@ -543,6 +543,7 @@ input:focus, textarea:focus {
     <div class="warn" id="warn"></div>
     <div class="nav">
       <button class="btn-sec" id="bv" onclick="prev()">← Anterior</button>
+      <button class="btn-sec" style="font-size:9px;color:var(--gray-300);border-color:var(--gray-100)" onclick="pularParaFinal()">Pular [teste]</button>
       <button class="btn-sec" id="bn" onclick="avancar()">Próxima →</button>
     </div>
   </div>
@@ -798,6 +799,11 @@ function showResult(data,err){
 }
 function reset(){cur=0;ans={};exec={};scores={};perguntas=[];apiKey='';show('s0');}
 function imprimirRelatorio(){window.print();}
+function pularParaFinal(){
+  // Auto-answer all remaining questions with first option for testing
+  for(let i=cur;i<QS.length;i++){ if(ans[i]===undefined) ans[i]=0; }
+  calcPerguntas();
+}
 
 async function salvarNoAirtable(data){
   try{
