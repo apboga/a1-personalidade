@@ -8,8 +8,8 @@
   ],
   "routes": [
     { "src": "/a1", "dest": "/a1.html" },
-    { "src": "/api/buscar-cliente", "dest": "/buscar-cliente.js" },
-    { "src": "/api/salvar-assessment", "dest": "/salvar-assessment.js" },
-    { "src": "/api/claude", "dest": "/claude.js" }
+    { "src": "/api/buscar-cliente(.*)", "dest": "/buscar-cliente.js" },
+    { "src": "/api/salvar-assessment(.*)", "dest": "/salvar-assessment.js" },
+    { "src": "/api/claude(.*)", "dest": "/claude.js" }
   ]
 }
