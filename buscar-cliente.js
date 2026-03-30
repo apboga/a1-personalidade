@@ -43,20 +43,27 @@ export default async function handler(req, res) {
       return res.status(403).json({ error: 'Este link já foi utilizado' });
     }
 
-    // Pegar IDs dos campos linked records
-    const clienteId = link.fields.cliente_link?.[0] || null;
-    const assessmentId = link.fields.assessment_id?.[0] || null;
+    // Pegar IDs — tolerante a diferentes formatos
+    const clienteIdRaw = link.fields.cliente_link;
+    const assessmentIdRaw = link.fields['assessment_'];
+
+    const clienteId = Array.isArray(clienteIdRaw) ? clienteIdRaw[0] : clienteIdRaw || null;
+    const assessmentId = Array.isArray(assessmentIdRaw) ? assessmentIdRaw[0] : assessmentIdRaw || null;
 
     // Buscar nome do cliente
     let clienteName = 'Mentorado';
     let clienteEmail = '';
 
     if (clienteId) {
-      const clienteRes = await fetch(`${BASE_URL}/Clientes/${clienteId}`, { headers: HEADERS });
-      if (clienteRes.ok) {
-        const clienteData = await clienteRes.json();
-        clienteName = clienteData.fields.nome || 'Mentorado';
-        clienteEmail = clienteData.fields.email || '';
+      try {
+        const clienteRes = await fetch(`${BASE_URL}/Clientes/${clienteId}`, { headers: HEADERS });
+        if (clienteRes.ok) {
+          const clienteData = await clienteRes.json();
+          clienteName = clienteData.fields.nome || clienteData.fields.Name || 'Mentorado';
+          clienteEmail = clienteData.fields.email || clienteData.fields.Email || '';
+        }
+      } catch(e) {
+        console.error('Erro ao buscar cliente:', e);
       }
     }
 
